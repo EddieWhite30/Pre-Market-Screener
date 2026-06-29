@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>EddieBones — Pre-Market Screener</title>
-<link rel="stylesheet" href="EddieBones%20%E2%80%94%20Pre-Market%20Screener_files/tabler-icons.min_HSFK.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
@@ -282,15 +282,15 @@
   <div class="stat-grid">
     <div class="stat-card">
       <div class="stat-label">Routine progress</div>
-      <div class="stat-val green" id="stat-progress">3 / 3</div>
+      <div class="stat-val green" id="stat-progress">0 / 3</div>
     </div>
     <div class="stat-card">
       <div class="stat-label">Best ticker</div>
-      <div class="stat-val amber" id="stat-ticker" style="font-size:20px; padding-top:2px; font-family:var(--font-mono); letter-spacing:2px;">NVDA</div>
+      <div class="stat-val amber" id="stat-ticker" style="font-size:20px; padding-top:2px; font-family:var(--font-mono); letter-spacing:2px;">—</div>
     </div>
     <div class="stat-card">
       <div class="stat-label">Market status</div>
-      <div class="stat-val status" id="stat-status" style="color: rgb(46, 207, 154);">Ready to trade</div>
+      <div class="stat-val status" id="stat-status" style="color:#8b9099;">Scanning</div>
     </div>
   </div>
 
@@ -327,11 +327,11 @@
         <div class="ticker-fields">
           <div class="field-group">
             <div class="field-lbl">IV rank <span class="primary-tag">primary</span></div>
-            <input class="field-inp" id="iv_NVDA" type="number" min="0" max="100" step="1" placeholder="0 – 100" value="37.3" oninput="tickers['NVDA'].iv=this.value">
+            <input class="field-inp" id="iv_NVDA" type="number" min="0" max="100" step="1" placeholder="0 – 100" value="" oninput="tickers['NVDA'].iv=this.value">
           </div>
           <div class="field-group">
             <div class="field-lbl">ADR %</div>
-            <input class="field-inp" id="adr_NVDA" type="number" min="0" max="30" step="0.1" placeholder="optional" value="5.81" oninput="tickers['NVDA'].adr=this.value">
+            <input class="field-inp" id="adr_NVDA" type="number" min="0" max="30" step="0.1" placeholder="optional" value="" oninput="tickers['NVDA'].adr=this.value">
           </div>
         </div>
       </div><div class="ticker-card">
@@ -342,11 +342,11 @@
         <div class="ticker-fields">
           <div class="field-group">
             <div class="field-lbl">IV rank <span class="primary-tag">primary</span></div>
-            <input class="field-inp" id="iv_AMZN" type="number" min="0" max="100" step="1" placeholder="0 – 100" value="67.5" oninput="tickers['AMZN'].iv=this.value">
+            <input class="field-inp" id="iv_AMZN" type="number" min="0" max="100" step="1" placeholder="0 – 100" value="" oninput="tickers['AMZN'].iv=this.value">
           </div>
           <div class="field-group">
             <div class="field-lbl">ADR %</div>
-            <input class="field-inp" id="adr_AMZN" type="number" min="0" max="30" step="0.1" placeholder="optional" value="7.49" oninput="tickers['AMZN'].adr=this.value">
+            <input class="field-inp" id="adr_AMZN" type="number" min="0" max="30" step="0.1" placeholder="optional" value="" oninput="tickers['AMZN'].adr=this.value">
           </div>
         </div>
       </div><div class="ticker-card">
@@ -357,11 +357,11 @@
         <div class="ticker-fields">
           <div class="field-group">
             <div class="field-lbl">IV rank <span class="primary-tag">primary</span></div>
-            <input class="field-inp" id="iv_IWM" type="number" min="0" max="100" step="1" placeholder="0 – 100" value="64.7" oninput="tickers['IWM'].iv=this.value">
+            <input class="field-inp" id="iv_IWM" type="number" min="0" max="100" step="1" placeholder="0 – 100" value="" oninput="tickers['IWM'].iv=this.value">
           </div>
           <div class="field-group">
             <div class="field-lbl">ADR %</div>
-            <input class="field-inp" id="adr_IWM" type="number" min="0" max="30" step="0.1" placeholder="optional" value="5.68" oninput="tickers['IWM'].adr=this.value">
+            <input class="field-inp" id="adr_IWM" type="number" min="0" max="30" step="0.1" placeholder="optional" value="" oninput="tickers['IWM'].adr=this.value">
           </div>
         </div>
       </div></div>
@@ -373,7 +373,7 @@
   </div>
 
   <!-- RESULTS -->
-  <div id="resultsWrap" style="display: block;">
+  <div id="resultsWrap" style="display:none;">
     <div class="section-header">
       <div class="section-title">Rankings</div>
     </div>
@@ -439,9 +439,9 @@ be larger to overcome premium cost.</span>
     </div>
     <div class="step-row" onclick="toggleStep(0)">
       <div class="step-num">01</div>
-      <div class="step-check done" id="check-0"></div>
+      <div class="step-check" id="check-0"></div>
       <div class="step-body">
-        <div class="step-text done" id="text-0"><span class="time-badge">9:00 AM</span>Pull IV rank on marketchameleon for all tickers</div>
+        <div class="step-text" id="text-0"><span class="time-badge">9:00 AM</span>Pull IV rank on marketchameleon for all tickers</div>
         <div class="step-sub">Enter IV rank in the screener above — lowest IV rank = cheapest premium</div>
       </div>
     </div>
@@ -449,9 +449,9 @@ be larger to overcome premium cost.</span>
     <div class="divider-label"><span class="phase-dot"></span> 9:05 AM ET — rank &amp; select</div>
     <div class="step-row" onclick="toggleStep(1)">
       <div class="step-num">02</div>
-      <div class="step-check done" id="check-1"></div>
+      <div class="step-check" id="check-1"></div>
       <div class="step-body">
-        <div class="step-text done" id="text-1"><span class="time-badge">9:05 AM</span>Run screener — select your A+ ticker for the session</div>
+        <div class="step-text" id="text-1"><span class="time-badge">9:05 AM</span>Run screener — select your A+ ticker for the session</div>
         <div class="step-sub">If two tickers are close in IV rank, ADR% breaks the tie — pick the stronger mover</div>
       </div>
     </div>
@@ -459,9 +459,9 @@ be larger to overcome premium cost.</span>
     <div class="divider-label"><span class="phase-dot"></span> 9:10 AM ET — chart prep</div>
     <div class="step-row" onclick="toggleStep(2)">
       <div class="step-num">03</div>
-      <div class="step-check done" id="check-2"></div>
+      <div class="step-check" id="check-2"></div>
       <div class="step-body">
-        <div class="step-text done" id="text-2"><span class="time-badge">9:10 AM</span>Mark key levels on selected ticker — ready for open</div>
+        <div class="step-text" id="text-2"><span class="time-badge">9:10 AM</span>Mark key levels on selected ticker — ready for open</div>
         <div class="step-sub">HTF bias · prior day high/low · any overnight gap levels</div>
       </div>
     </div>
@@ -541,7 +541,7 @@ premium loses if the stock barely moves.
     </div>
   </div>
 
-  <div class="valid-banner show" id="banner">
+  <div class="valid-banner" id="banner">
     <i class="ti ti-check" style="font-size:16px; color:var(--green-text);"></i>
     <span class="valid-text">PRE-MARKET COMPLETE — READY TO TRADE</span>
   </div>
